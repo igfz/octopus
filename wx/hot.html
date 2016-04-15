@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,user-scalable=no">
+	<title>章鱼微站-推荐</title>
+	<link rel="shortcut icon" href="favicon.ico">
+	<link href="css/base1.css" rel="stylesheet">
+	<link href="css/hot.css" rel="stylesheet">
+<body>
+<header class="tabs">
+	<span class="i-star" data-id="0">推荐</span>
+	<span class="i-hat" data-id="1">英伦操盘手</span>
+	<span class="i-bar" data-id="2">分析师推荐</span>
+	<span class="i-dan" data-id="3">章鱼单关</span>
+	<span class="i-lite" data-id="4">章鱼解盘</span>
+	<span class="i-guide" data-id="5">赢彩指南</span>
+</header>
+<section class="tab-bd">
+	<ul class="tab-item"></ul>
+	<ul class="tab-item"></ul>
+	<ul class="tab-item"></ul>
+	<ul class="tab-item"></ul>
+	<ul class="tab-item"></ul>
+	<ul class="tab-item"></ul>
+	<div class="more-box dn"><b class="more">加载更多...</b></div>
+</section>
+<nav>
+	<a href="index.html" class="i-news">爆料</a><a href="hot.html" class="active i-ok">推荐</a><a href="promotion.html" class="i-box">活动中心</a>
+</nav>
+<script id="tplMain" type="text/template">
+<%  var o = responseData.list, l=o.length;
+if (l) {
+for(var i=0;i<l;i++){ var obj =o[i];%>
+<li><a href="article.html?id=<%=obj.id%>&tp=<%=obj.type%>"><span style="background-image:url(<%=obj.img?obj.img:'img/default-s.png' %>);"></span>
+	<div class="info bg-<%=obj.type%> tc"><h4><%=obj.title%></h4><p><%=obj.titleS%></p>
+	</div>
+	</a>
+</li>
+<% }}else{%>
+	<li class="nodata">暂时没有更多的推荐信息了...</li>
+<% } %>
+</script>
+<script src="js/zepto.min.js"></script>
+<script src="js/hot.js"></script>
+</body>
+</html>

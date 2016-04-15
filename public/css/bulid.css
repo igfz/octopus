@@ -1,0 +1,74 @@
+@charset "utf-8";
+/* 样式继承base.css，涉及：商品；认证；装修页面 */
+
+/* 商品页面 */
+.goods{margin:50px 30px;}
+.goods i{vertical-align:-3px;margin-right:4px;font-size:18px;}
+.goods .progress-1{width:380px;height:37px;background:url(../images/progress.png) no-repeat center 0;}
+.goods .status{width:380px;height:60px;margin:0 auto 30px;}
+.goods .status em{font-size:16px;}
+.ml95{margin-left:95px;}
+.ml110{margin-left:110px;}
+.goods h2{height:55px;line-height:55px;text-indent:20px;background:#f9fafb;border:1px solid #e9eaee;border-left:none;border-right:none;font-weight:normal;}
+.goods .item{width:218px;height:325px;margin:20px 20px 30px 0;border:1px solid #e1e7eb;}
+.goods .item.last{margin-right:0;}
+.goods .desc{height:260px;padding:10px;font-size:14px;color:#8395a2;}
+.goods .img-thumb{width:200px;height:200px;}
+.goods .edit,.goods .del{width:114px;height:40px;line-height:40px;float:left;border-top:1px solid #e1e7eb;font-size:16px;text-align:center;color:#b0bdc7;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;}
+.goods .edit{width:103px;height:45px;float:left;border-right:1px solid #e1e7eb;}
+.goods .op{font-size:16px;position:absolute;margin-left:800px;margin-top:-38px;}
+.goods .clazz-edit{color:#1187AB;}
+.goods .clazz-del{color:#f60;margin-left:40px;}
+
+.grid{width:580px;margin:0 auto;color:#97A5B0;position:relative;}
+.grid img{width:75px;height:75px;margin-right:10px;}
+.grid tr td{padding:6px 2px;}
+.grid input[type="text"]{height:36px;line-height:36px\9;font-size:14px;}
+.grid select{width:125px;height:40px;outline:none;color:#97A5B0;}
+.grid .desc{width:425px;height:80px;}
+.grid .profile li{width:136px;height:142px;margin-right:6px;border:1px solid #BFBFBF;}
+.grid .profile input{width:80px;height:22px;line-height:22px\9;font-size:14px;}
+.grid .profile dl{margin:5px 8px 6px;}
+.grid .profile dt{height:16px;}
+.grid .profile dd{margin-top:10px;}
+.grid .add-pro{width:60px;margin:124px 0 0 430px;position:absolute;color:#43B7DA;}
+.grid .del-pro{width:18px;height:18px;position:absolute;margin-left:107px;background: url(../images/dialog-btns.gif) no-repeat -141px -8px;}
+.grid .del-pro:hover{background-position:-141px -36px;}
+.grid .w90{width:90px;}
+.grid .w190{width:190px;}
+.grid .w425{width:425px;}
+.grid .cb{width:16px;height:16px;vertical-align:-3px;}
+.grid .upload{padding:2px 20px 11px 19px;font-size:50px;color:#B0BDC7;background:#F0F4F6;vertical-align:21px;}
+.grid .submit{margin-right:40px;}
+
+.goods-form{height:580px;overflow:auto;}
+.goods-form em,.cate-form em{position:absolute;margin-top:36px;}
+.goods-form .del-pic{width:20px;height:20px;margin:-5px 0 0 60px;background:rgba(0, 0, 0, 0.35) url(../images/dialog-btns.gif) no-repeat -140px -4px;position:absolute;border-radius:50%;}
+
+.w160{width:160px;}
+.w120{width:120px;}
+.auth{margin:50px 30px;}
+.auth i{vertical-align:-3px;margin-right:4px;font-size:18px;}
+.auth .status{width:380px;height:60px;margin:0 auto 30px;}
+.auth .status em{font-size:16px;}
+.auth .progress-3{width:380px;height:37px;background:url(../images/progress.png) no-repeat center -74px;}
+.auth .tabs{border-bottom:1px solid #E9EDEF;}
+.auth h2{width:120px;padding:9px 20px;text-align:center;float:left;font:20px normal;}
+.auth h2.crt{border-bottom:2px solid #43B7DA;}
+.auth h3{padding:9px 20px;text-indent:60px;font:26px normal;}
+
+.auth .grid{width:100%;font-size:16px;table-layout:fixed;}
+.auth .grid tr{height:65px;}
+.auth .grid tr td:first-child{text-align:right;}
+.auth .grid tr td.tc{text-align:center;}
+.auth .Validform_checktip{position:absolute;margin-top:40px;}
+.auth input[type="text"]{width:420px;height:36px;line-height:36px\9;font-size:16px;color:#6a747c;}
+.auth input[type="text"]:focus{color:#bfbfbf;}
+.auth input.w160{width:160px;}
+.auth .upimg{width:120px;height:90px;margin-right:0;}
+.auth .demo{margin-left:60px;font-size:14px;}
+.auth .demo .upimg{margin-left:45px;}
+.auth .code{width:120px;height:40px;margin-left:10px;position:absolute;}
+.auth .reget i{position:absolute;margin:40px 0 0 10px;font-size:12px;color:#BFBFBF;}
+.auth .submit{margin-top:30px;}
+.auth .pic-status{height:90px;width:0;background:#6BA3E3;position:absolute;display:none;}

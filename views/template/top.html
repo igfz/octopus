@@ -1,0 +1,29 @@
+<div id="header">
+	<div class="top">
+		<a href="/" id="logo"></a>
+		<% if (user) { %>
+		<ul id="nav" class="r row">
+			<li>
+				<a href="javascript:;">欢迎您：<%- user%></a>
+			</li>
+			<li><a href="javascript:;" class="">消息</a></li>
+			<li>|</li>
+			<li><a href="/manager/add-goods" class="">我的店铺</a></li>
+			<li>|</li>
+			<li><a href="/user/auth-person" class="">财富管理</a></li>
+			<li>|</li>
+			<li><a href="/" class="">帮助中心</a></li>
+			<li>|</li>
+			<li><a href="/logout"  id="lgout" class="">退出</a></li>
+		</ul>
+		<% } else {%>
+		<ul id="nav" class="r row">
+			<li><a href="javascript:;" class="">帮助中心</a></li>
+			<li>|</li>
+			<li><a href="/login" class="tdl">立即登录</a></li>
+			<li>|</li>
+			<li><a href="/register" class="tdl">免费注册</a></li>
+		</ul>
+		<% } %>
+	</div>
+</div>

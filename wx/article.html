@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,user-scalable=1">
+	<title>章鱼微站-资讯详情</title>
+	<link rel="shortcut icon" href="favicon.ico">
+	<link href="css/base1.css" rel="stylesheet">
+	<style>
+	body{padding-bottom:45px;}
+	article{margin-bottom:10px;}
+	h1{height:45px;line-height:45px;background:rgba(20,20,20,.9);color:#fff;}
+	.hot-img{width:100%;}
+	.profile{padding-right:5%;margin:15px 0;text-align:right;}
+	.profile span{padding:3px 5px;margin-right:5px;border-radius:5px;}
+	.team{background:#F0DDF8;}
+	.man{background:#CAF2CB;}
+	.time{background:#F3E6D6;}
+	.yellow{background:#F5FAD5}
+	.content{padding:0 2%;font-size:16px;}
+	.content img{width:100%;}
+	section{padding:30px 0;background:#EFEEEE;border-top:1px solid #DBDADA;}
+	table{width:95%;margin:8px auto;font-size:16px;}
+	table td{height:30px;border:1px solid #bbb;text-align:center;}
+	table .forecast td{width:29%;}
+	table .forecast td.tit{width:13%;}
+	table .hd{background:#999;color:#fff;}
+	table .hd a{color:#fff;display:block;height:40px;line-height:40px;}
+	table .hd a:after{width:8px;height:8px;content:'';display:inline-block;-webkit-transform:rotate(45deg);border-width:2px 2px 0 0;border-color:#FFF;border-style:solid;margin:15px 15px 0 0;float:right;}
+	table .red{color:red;}
+	</style>
+<body>
+<article>
+  <h1 class="tc"></h1>
+  <div><img class="hot-img" src=""></div>
+  <div class="profile">
+  	<span class="time"></span>
+  </div>
+  <p class="content"></p>
+</article>
+<nav>
+	<a href="index.html" class="i-news">爆料</a><a href="hot.html" class="i-ok">推荐</a><a href="promotion.html" class="i-box">活动中心</a>
+</nav>
+<script id="tplMain" type="text/template">
+<section>
+	<h2 class="tc">近三场历史推荐</h2>
+<% for(var i=0,l=history.length;i<l;i++){ var obj =history[i];%>
+<table>
+  <tr><td colspan="4" class="hd"><a href="article.html?id=<%=obj.id%>&tp=2"><%=obj.title%></a></td></tr>
+  <tr class="team"><td>场次</td><td colspan="3"><%=obj.event%>：<%= (obj.weekDay==1)?'周一':(obj.weekDay==2)?'周二':(obj.weekDay==3)?'周三':(obj.weekDay==4)?'周四':(obj.weekDay==5)?'周五':(obj.weekDay==6)?'周六':(obj.weekDay==7)?'周日':'' %><%=obj.num%><%=obj.host%>(<%=obj.lball%>) VS <%=obj.guest%></td></tr>
+  <tr class="yellow"><td>赛果</td><td colspan="3" class="red"><%=obj.results%></td></tr>
+  <tr class="forecast time"><td class="tit">预测</td><td><%=obj.forecast[0]%></td><td><%=obj.forecast[1]%></td><td><%=obj.forecast[2]%></td></tr>
+</table>
+<% } %>
+	<div class="history"></div>
+</section>
+</script>
+<script src="js/zepto.min.js"></script>
+<script>
+(function($) {
+var  $ct = $('.content'),id = getUrlParam('id'),
+		tp = getUrlParam('tp'),tplMain=$('#tplMain').html();
+
+	//ajax 参数
+	var indexParam = JSON.parse(JSON.stringify(ajaxParam));
+	indexParam.busiCode ='550006';
+	indexParam.commandInfo = {'id':id,'type':tp};
+	//初始化ajax
+	!function(){
+		var param = {'transMessage':JSON.stringify(indexParam)};
+		$.ajax({'type':'GET','url':ajaxUrl,dataType:'jsonp',jsonp:'f',
+			'data':param,
+			beforeSend:function(){
+				$ct.html(loadImg);
+			},
+			success:function(json){
+				var obj = json.responseData;
+				$('h1').text(obj.titleS);
+				$('.time').html('发布时间：'+obj.releaseTime.substr(0,16));
+				$ct.html(obj.content);
+				//从文章中得到第一个图片作为banner
+				var $img = $ct.find('img').first();
+				var src = $img.attr('src');
+				if (src) {
+					$img.remove();
+					$('.hot-img').attr('src',src);
+				}else{
+					$('.hot-img').remove();
+				}
+				$img.remove();
+				$('.hot-img').attr('src',src);
+				//如果是分析师推荐就有历史
+				obj.history && getHistory(obj.history,obj.analyst);
+			}
+		});
+	}();
+	//分析师推荐就有历史
+	function getHistory(json,man){
+		json = {'history':json};
+		var str = $.tpl(tplMain,json);
+		$('article').after(str);
+		$('.profile').prepend('<span class="team">'+man+'</span>');
+	}
+
+})(Zepto);
+</script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<% include template/header.html %>
+<link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+<div id="container">
+	<% include template/top.html %>
+	<div class="content">
+		<div class="gallery">
+			<div id="slider" class="slider">
+				<div class="conbox">
+					<a href="#" title=""><img src="//www.hercity.com/upfiles/2015/05/20150504170154602744.jpg"></a>
+					<a href="#" title=""><img src="//www.hercity.com/upfiles/2015/05/20150504170154164145.jpg"></a>
+					<a href="#" title=""><img src="//www.hercity.com/upfiles/2015/05/20150504170156952680.jpg"></a>
+					<a href="#" title=""><img src="//www.hercity.com/upfiles/2015/05/20150504170158310653.jpg"></a>
+					<a href="#" title=""><img src="//www.hercity.com/upfiles/2015/05/20150504170158547082.jpg"></a>
+				</div>
+				<div class="switcher">
+					<a href="#" class="cur"></a>
+					<a href="#"></a>
+					<a href="#"></a>
+					<a href="#"></a>
+					<a href="#"></a>
+				</div>
+			</div>
+			<!--<a href="/app/shop/createshop" class="btn-go btn-blue">管理店铺</a>-->
+			<a href="/login" class="btn-go btn-blue">我要开店</a>
+		</div>
+		<dl class="profile">
+			<dt>核心优势/Core Advantage</dt>
+			<dd><img class="avatar1" src="images/dot.gif"><h3>核心技术</h3>
+			<p>Praesent sed hendrerit ligula. Praesent eros turpis iaculis id gravida eu, consequat viverra odio. Phasellus ac arcu lacus. Sed at nunc feugiat.</p>
+			</dd>
+			<dd><img class="avatar2" src="images/dot.gif"><h3>简单操作</h3>
+			<p>Praesent sed hendrerit ligula. Praesent eros turpis iaculis id gravida eu, consequat viverra odio. Phasellus ac arcu lacus. Sed at nunc feugiat.</p>
+			</dd>
+			<dd><img class="avatar3" src="images/dot.gif"><h3>快速答疑</h3>
+			<p>Praesent sed hendrerit ligula. Praesent eros turpis iaculis id gravida eu, consequat viverra odio. Phasellus ac arcu lacus. Sed at nunc feugiat.</p>
+			</dd>
+		</dl>
+		<dl class="showcase">
+			<dt>成功案例</dt>
+			<dd class="productshow">
+				<div class="scrollcontainer">
+					<ul>
+						<li>
+							<img src="//www.hercity.com/upfiles/thumb/2015/04/20150408095612827654.jpg">
+							<p>旗袍美女</p>
+						</li>
+						<li>
+							<img src="//www.hercity.com/upfiles/thumb/2015/04/20150402102856381560.jpg">
+							<p>旗袍美女</p>
+						</li>
+						<li>
+							<img src="//www.hercity.com/upfiles/thumb/2015/04/20150402102146670198.jpg">
+							<p>旗袍美女</p>
+						</li>
+						<li>
+							<img src="//www.hercity.com/upfiles/thumb/2015/03/20150325103240360093.jpg">
+							<p>旗袍美女</p>
+						</li>
+						<li>
+							<img src="//www.hercity.com/upfiles/thumb/2015/03/20150313143532616970.jpg">
+							<p>旗袍美女</p>
+						</li>
+						<li>
+							<img src="//www.hercity.com/upfiles/thumb/2015/03/20150313143057991280.jpg">
+							<p>旗袍美女</p>
+						</li>
+						<li>
+							<img src="//www.hercity.com/upfiles/thumb/2015/03/20150312123226565502.jpg">
+							<p>旗袍美女</p>
+						</li>
+					</ul>
+				</div>
+				<div class="ctrl">
+          <a class="l aleft" href="javascript:;"><i class="icon-angle-left"></i></a>
+          <a class="r aright" href="javascript:;"><i class="icon-angle-right"></i></a>
+        </div>
+			</dd>
+		</dl>
+		<ul class="foot row">
+			<li>
+				<h4><img src="images/dot.gif" class="contact">联系我们</h4>
+				<p>北京市朝阳区建国路56号<br>天洋运河壹号E1栋</p>
+				<p>(554) 616-9926</p>
+			</li>
+			<li>
+				<h4><img src="images/dot.gif" class="links">友情链接</h4>
+				<p>Google</p>
+				<p>Facebook</p>
+			</li>
+			<li>
+				<h4><img src="images/dot.gif" class="logo"></h4>
+				<p class="tc">Copyright © 2014 Elixir</p>
+				<p class="tc">Terms of Use　|　Support/Help</p>
+			</li>
+		</ul>
+	</div>
+</div>
+<% include template/script.html %>
+<script src="js/xslider.js"></script>
+<script>
+$("#slider").Xslider1({
+		speed: 800, //动画速度
+		space: 3000, //时间间隔
+		trigger: 'mouseover', //触发事件 注意用mouseover代替hover
+		switcher: '.switcher', //切换触发器id或class
+		current:'cur', //当前切换器样式名称
+		rand:false //是否随机指定默认幻灯图片
+	});
+
+	//横向滚动
+	$(".productshow").Xslider({
+		unitdisplayed:3,
+		numtoMove:2,
+		autoscroll:2000,  //自动移动间隔时间     默认null不自动移动;
+		speed:800,
+		loop:"cycle"
+	});
+</script>
+</body>
+</html>

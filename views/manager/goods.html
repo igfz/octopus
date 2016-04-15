@@ -1,0 +1,133 @@
+<% include ../template/header.html %>
+<link rel="stylesheet" href="/css/manager.css">
+</head>
+<body>
+<div id="container">
+	<% include ../template/top.html %>
+	<div class="middle">
+		<div id="sitemap">
+			<div class="l">
+				<a href="/" class="back btn"><i class="icon-angle-left"></i>返回</a><h2 class="f20 ml20 n di">登录</h2>
+			</div>
+		</div>
+	</div>
+	<div id="main">
+		<% include ../template/menu.html %>
+		<div class="main">
+			<ul class="row nav-tabs">
+				<li><span class="tab active">商品管理</span></li>
+				<li><a href="/manager/category" class="tab">分类管理</a></li>
+				<li class="nav-search"><input type="text" class="nav-search-input" name=""><button type="button" class="btn btn-blue btn-search">搜索</button></li>
+			</ul>
+			<dl class="gm-box">
+				<dt class="gm-box-hd"><a href="/manager/add-goods" class="btn btn-blue"><i class="icon-plus"></i>增加商品</a></dt>
+				<dd>
+					<table class="gm-box-bd">
+					  <tr>
+					    <th width="5%">ID</th>
+					    <th width="10%">图片</th>
+					    <th width="11%">名称</th>
+					    <th width="11%">价格</th>
+					    <th width="11%">销售量</th>
+					    <th width="11%">总库存</th>
+					    <th width="11%">状态</th>
+					    <th width="11%">分类</th>
+					    <th width="19%">操作</th>
+					  </tr>
+					  <tr>
+					  	<td>1</td>
+					    <td><img src="../images/app-icon.png"></td>
+					    <td>审核中</td>
+					    <td>45.00</td>
+					    <td>5676</td>
+					    <td>646544</td>
+					    <td>热卖中</td>
+					    <td>美食</td>
+					    <td class="gm-box-bd-ctrl" data-gid="1">
+					    	<button type="button" class="btn btn-down">下架</button>
+					    	<div class="item">
+					    		<a href="javascript:;" class="btn-edit blue"><i class="icon-edit"></i>编辑</a>
+					    		<a href="javascript:;" class="btn-del red"><i class="icon-trash"></i>删除</a>
+					    	</div>
+					    </td>
+					  </tr>
+					  <tr>
+					  	<td>1</td>
+					    <td><img src="../images/app-icon.png"></td>
+					    <td>审核中</td>
+					    <td>45.00</td>
+					    <td>5676</td>
+					    <td>646544</td>
+					    <td>热卖中</td>
+					    <td>美食</td>
+					    <td class="gm-box-bd-ctrl" data-gid="2">
+					    	<button type="button" class="btn btn-down">下架</button>
+					    	<div class="item">
+					    		<a href="javascript:;" class="btn-edit blue"><i class="icon-edit"></i>编辑</a>
+					    		<a href="javascript:;" class="btn-del red"><i class="icon-trash"></i>删除</a>
+					    	</div>
+					    </td>
+					  </tr>
+					  <tr>
+					  	<td>1</td>
+					    <td><img src="../images/app-icon.png"></td>
+					    <td>审核中</td>
+					    <td>45.00</td>
+					    <td>5676</td>
+					    <td>646544</td>
+					    <td>热卖中</td>
+					    <td>美食</td>
+					    <td class="gm-box-bd-ctrl" data-gid="3">
+					    	<button type="button" class="btn btn-down">下架</button>
+					    	<div class="item">
+					    		<a href="javascript:;" class="btn-edit blue"><i class="icon-edit"></i>编辑</a>
+					    		<a href="javascript:;" class="btn-del red"><i class="icon-trash"></i>删除</a>
+					    	</div>
+					    </td>
+					  </tr>
+					</table>
+				</dd>
+				<dd class="tr hl24 mt20">这里是分页<a href="javascript:;">1</a><a href="javascript:;">2</a><a href="javascript:;">3</a></dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<input type="hidden" id="menuIndex" value="2">
+<% include ../template/script.html %>
+<script>
+var $ctrl = $('.gm-box-bd-ctrl');
+
+$('.btn-search').on('click',function(){
+	var v = $('.nav-search-input').val();
+	alert(v);
+});
+
+$ctrl.on('click','.btn-down',function(){
+	var gid = $(this).closest('.gm-box-bd-ctrl').data('gid');
+	jDialog.confirm('执行后将无法在前台展示，您确定要下架吗？',{
+	    type : 'highlight',
+	    handler : function(button,dialog) {
+	        alert(gid);
+	        dialog.close();
+	    }
+	},{},{title : '下架商品确认'});
+})
+.on('click','.btn-edit',function(){
+	var gid = $(this).closest('.gm-box-bd-ctrl').data('gid');
+	alert(gid);
+
+})
+.on('click','.btn-del',function(){
+	var gid = $(this).closest('.gm-box-bd-ctrl').data('gid');
+	jDialog.confirm('执行后将无法恢复，您确定要删除吗？',{
+	    type : 'highlight',
+	    handler : function(button,dialog) {
+	        alert(gid);
+	        dialog.close();
+	    }
+	},{},{title : '删除商品确认'});
+});
+</script>
+</script>
+</body>
+</html>

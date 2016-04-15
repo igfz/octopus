@@ -1,0 +1,163 @@
+<% include ../template/header.html %>
+<link rel="stylesheet" href="/css/bulid.css">
+</head>
+<body>
+<div id="container">
+	<% include ../template/top.html %>
+	<div class="middle">
+		<div id="sitemap">
+			<div class="l">
+				<a href="my-app.html" class="back btn"><i class="icon-angle-left"></i>返回</a><h2 class="f20 ml20 n di">登录</h2>
+			</div>
+		</div>
+	</div>
+	<div id="main">
+		<dl class="auth">
+			<dt>
+				<div class="status"><img class="progress-3" src="../images/dot.gif"><em>上传商品</em><em class="ml95">店铺装修</em><em class="ml110">认证</em></div>
+			</dt>
+			<dd class="cf tabs">
+				<h2><a href="/user/auth-person">个人认证</a></h2><h2 class="crt">企业认证</h2>
+			</dd>
+			<dd class="info">
+				<form class="comForm" method="post" action="user/tijiaoAction">
+				<div class="alarm dn"></div>
+					<h3>企业信息</h3>
+					<table class="grid">
+						<tr><td class="w160">用户名称：</td><td><em>我是希瑞</em></td></tr>
+						<tr><td>企业名称：</td><td><em class="Validform_checktip"></em><input type="text" name="userName" datatype="*"></td></tr>
+						<tr><td>营业执照注册号：</td><td><em class="Validform_checktip"></em><input type="text" name="userName" datatype="*"></td></tr>
+						<tr><td>营业执照所在地：</td><td><em class="Validform_checktip"></em>
+							<select name="goods_type"><option>北京</option><option>天津</option></select>
+							<select name="goods_type"><option>丰台</option><option>海淀</option></select>
+							</td></tr>
+						<tr><td>营业限期：</td><td><em class="Validform_checktip"></em>
+							<select name="goods_type"><option>2015</option><option>2015</option></select>
+							<select name="goods_type"><option>01</option><option>02</option></select>
+							<select name="goods_type"><option>01</option><option>02</option></select>
+						</td></tr>
+						<tr><td>常用地址：</td><td><em class="Validform_checktip"></em><input type="text" name="userName" datatype="*"></td></tr>
+						<tr><td>联络电话：</td><td><em class="Validform_checktip"></em><input type="text" name="userName" datatype="m"></td></tr>
+						<tr><td>营业执照副本扫描件：</td><td>
+							<div class="l w120 tc">
+								<div class="pic-status"></div>
+								<img src="../images/dot.gif" class="upimg showPic"><button type="button" class="mt5 btn-upload">点击上传</button>
+							</div>
+							<div class="l demo">
+								<em class="abs">示例：</em>
+								<img src="../images/dot.gif" class="upimg">
+								<ul class="dib r ml10"><li>1、必须为清晰彩色原件扫描件或数码照</li><li>2、必须在有效期内且年检章齐全</li>
+								<li>3、照片支持png，jpg，gif，大小不超过3M</li><li>4、必须为中国大陆工商局颁发</li></ul>
+							</div>
+						</td></tr>
+					</table>
+					<h3>法人信息</h3>
+					<table class="grid">
+						<tr><td class="w160">真实姓名：</td><td><em class="Validform_checktip"></em><input type="text" class="w420" name="userName" datatype="*"></td></tr>
+						<tr><td>身份证号码：</td><td><em class="Validform_checktip"></em><input type="text" class="w300" name="userName" datatype="*"></td></tr>
+						<tr><td>联系方式：</td><td><em class="Validform_checktip"></em><input type="text" class="w300" name="userName" datatype="*"></td></tr>
+						<tr><td>身份证类型：</td><td>
+						<label><input type="radio" name="idcard" checked>二代身份证</label>
+						<label class="ml10"><input type="radio" name="idcard">二代身份证</label>
+						</td></tr>
+						<tr><td>身份证正面：</td><td>
+						<div class="l w120 tc"><div class="pic-status"></div>
+								<img src="../images/dot.gif" class="upimg showPic"><button type="button" class="mt5 btn-upload">点击上传</button>
+							</div>
+							<div class="l demo">
+								<em class="abs">示例：</em>
+								<img src="../images/dot.gif" class="upimg">
+								<ul class="dib r ml10"><li>1、证件全部信息清晰无遮挡</li><li>2、有效期在一月以上</li>
+								<li>3、照片支持png，jpg，gif，大小不超过3M</li></ul>
+							</div></td></tr>
+						<tr><td>身份证反面：</td><td>
+							<div class="l w120 tc"><div class="pic-status"></div>
+								<img src="../images/dot.gif" class="upimg showPic"><button type="button" class="mt5 btn-upload">点击上传</button>
+							</div>
+							<div class="l demo">
+								<em class="abs">示例：</em>
+								<img src="../images/dot.gif" class="upimg">
+								<ul class="dib r ml10"><li>1、证件全部信息清晰无遮挡</li><li>2、有效期在一月以上</li>
+								<li>3、照片支持png，jpg，gif，大小不超过3M</li></ul>
+							</div></td></tr>
+						<tr><td>验证码：</td><td><em class="Validform_checktip"></em>
+						<input type="text" class="w160" name="code" maxlength="4" datatype="n" errormsg="请填写4位验证码">
+						<a href="javascript:;" class="reget"><img class="code" src="../images/code.jpg"><i>看不清，换一张</i></a>
+						</td></tr>
+						<tr><td colspan="2" class="tc pt20"><button type="submit" class="btn btn-big btn-blue submit">提交认证信息</button></td>
+						</tr>
+					</table>
+				</form>
+			</dd>
+		</dl>
+	</div>
+</div>
+<% include ../template/script.html %>
+<script>
+var $form = $('.comForm');
+$.Tipmsg.r='';	//验证通过不显示其文字
+var validForm = $form.Validform({btnSubmit:'.submit', tipSweep:true,
+		tiptype:function(msg,o,cssctl){
+			if(!o.obj.is("form")){
+				var objtip=o.obj.siblings(".Validform_checktip");
+				cssctl(objtip,o.type);
+				objtip.text(msg);
+			}else{
+				var objtip= $('.alarm');
+				cssctl(objtip,o.type);
+				objtip.removeClass('dn').text(msg);
+			}
+		},
+		ajaxPost:true,callback:function(cb){
+			if(cb.succ){
+				location.href='/user/login/regsuccess';
+			}else{
+				$('.alarm').removeClass('dn').text(cb.msg);
+			}
+		}
+});
+
+$form.on('click','.reget',function(){
+	$('.code').attr('src','/user/login/verificationcode?'+Math.random());
+});
+
+//验证图片
+function validPic(file){
+	var pictype = 'gif|jpeg|jpg|bmp|png';
+	//图片格式限制
+	if (!RegExp('\.(' + pictype + ')$', 'i').test(file.name.toLowerCase())) {
+      alert('只能上传图片');
+      return false;
+  }
+  //图片大于3MB限制
+  if (Math.floor(file.size/1024)>1024*3) {
+  	alert('图片太大了');
+    return false;
+  }
+  return true;
+}
+
+//3个上传对象
+new MultipleUploader({
+  trigger: '.btn-upload',
+  action: '/upload/pic',
+  name: 'f',
+  accept:'image/\*',
+  change : function(){
+  	var file = this._files[0];
+  	if(!validPic(file)) {return false;}
+   	this.submit();
+  },
+  progress: function(e, pos, tot, per, f,$btn) {
+  	$btn.siblings('.pic-status').show().width(120*per/100);
+  }
+}).success(function(data,$btn) {
+  data = $.parseJSON(data);
+	var src = data.f.path;
+	$btn.siblings('.pic-status').hide().width(0);
+  $btn.siblings('.showPic').attr('src','\\'+src);
+});
+
+</script>
+</body>
+</html>

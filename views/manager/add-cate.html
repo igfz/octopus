@@ -1,0 +1,211 @@
+<% include ../template/header.html %>
+<link rel="stylesheet" href="/css/manager.css">
+</head>
+<body>
+<div id="container">
+	<% include ../template/top.html %>
+	<div class="middle">
+		<div id="sitemap">
+			<div class="l">
+				<a href="/" class="back btn"><i class="icon-angle-left"></i>返回</a><h2 class="f20 ml20 n di">登录</h2>
+			</div>
+		</div>
+	</div>
+	<div id="main">
+		<% include ../template/menu.html %>
+		<div class="main">
+			<h2 class="nav-hd">添加商品</h2>
+			<form  class="form" method="post" action="/goods/index/add">
+				<div class="alarm dn"></div>
+					<table class="grid">
+					  <tr>
+					    <td class="w90">商品名称：</td>
+					    <td><em class="Validform_checktip"></em>
+					    <input type="text" name="goods_name" placeholder="20位字符以内" maxlength="20" class="w425" datatype="s1-20">
+					    </td>
+					  </tr>
+					  <tr>
+					    <td>图片上传：</td>
+					    <td id="uploadPic">
+					    <a  href="javascript:;" class="btn-upload"></a></td>
+					  </tr>
+					  <tr>
+					    <td>商品介绍：</td>
+					    <td><textarea class="desc" name="goods_desc" maxlength="100" placeholder="限100字以内，商品介绍以手机屏幕显示请注意字数排版等"></textarea></td>
+					  </tr>
+					  <tr>
+					    <td>规格型号：</td>
+					    <td>
+					    	<a href="javascript:;" class="add-pro">添加规格</a>
+						    <ul class="row profile">
+							    <li>
+							    	<dl>
+							    		<dt>默认规格</dt>
+							    		<dd>型号：<input type="text" name="goods_type_name[]" class="type" datatype="s1-20"></dd>
+							    		<dd>价格：<input type="text" name="goods_type_price[]" class="price" datatype="n1-20"></dd>
+							    		<dd>库存：<input type="text" name="goods_type_amount[]" class="amount" datatype="n"></dd>
+							    	</dl>
+							    </li>
+						    </ul>
+					    </td>
+					  </tr>
+					  <tr>
+					    <td>平台类目：</td>
+					    <td><em class="Validform_checktip"></em>
+					    	<select name="category" class="typeIndex" datatype="*" data-val="">
+							    <option value="1">女装</option><option value="8">女鞋</option>
+							    <option value="14">箱包</option><option value="20">配饰</option>
+							    <option value="27">美妆</option><option value="34">内衣</option>
+							    <option value="40">家居</option><option value="47">母婴</option>
+							    <option value="53">男装</option><option value="60">男鞋</option>
+							    <option value="66">数码</option><option value="73">美食</option>
+							    <option value="79">家电</option><option value="87">汽车</option>
+							    <option value="93">花鸟</option>
+								</select>
+								<em class="Validform_checktip"></em>
+								<select name="sub_category" class="subType" datatype="*" data-val="">
+									<option value="9">凉鞋</option><option value="10">单鞋</option>
+									<option value="11">帆布鞋</option><option value="12">运动鞋</option>
+									<option value="13">高帮鞋</option>
+								</select>
+					    </td>
+					  </tr>
+					  <tr>
+					    <td>店内分类：</td>
+					    <td><select name="goods_type">
+							    <option>请选择</option>
+								</select>
+							</td>
+					  </tr>
+					  <tr>
+					    <td>商品支持：</td>
+					    <td><label><input type="checkbox" class="cb" name="support_return" value="1">七天无条件退货</label>
+					    <input type="hidden" name="account_id" value="">
+					    <input type="hidden" name="app_id" value="">
+					    <input type="hidden" name="logo" class="pics" value="">
+					    <input type="hidden" name="goods_id" value="">
+					    <input type="hidden" name="id" value="">
+					    </td>
+					  </tr>
+					  <tr><td colspan="2" class="tc">
+					  	<button type="submit" class="btn-blue mr10">保　存</button>
+					  	<button type="button" class="btn-blue">取　消</button>
+					  </td></tr>
+					</table>
+			</form>
+		</div>
+	</div>
+</div>
+<input type="hidden" id="menuIndex" value="2">
+<% include ../template/script.html %>
+<script id="profileTpl" type="text/template">
+<li>
+	<dl>
+		<dt><a href="javascript:;" class="del-pro"></a></dt>
+		<dd>型号：<input type="text" name="goods_type_name[]" class="type" datatype="s1-20"></dd>
+		<dd>价格：<input type="text" name="goods_type_price[]" class="price" datatype="n1-20"></dd>
+		<dd>库存：<input type="text" name="goods_type_amount[]" class="amount" datatype="n"></dd>
+	</dl>
+</li>
+</script>
+<script>
+//验证图片
+function validPic(file){
+	var pictype = 'gif|jpeg|jpg|bmp|png';
+	//图片格式限制
+	if (!RegExp('\.(' + pictype + ')$', 'i').test(file.name.toLowerCase())) {
+      alert('只能上传图片');
+      return false;
+  }
+  //图片大于3MB限制
+  if (Math.floor(file.size/1024)>1024*3) {
+  	alert('图片太大了');
+    return false;
+  }
+  return true;
+}
+$.Tipmsg.r='';	//验证通过不显示其文字x-highlight
+var $form = $('.form');
+
+$form.Validform({tipSweep:true,
+		tiptype:function(msg,o,cssctl){
+			if(!o.obj.is('form')){//验证出错后提示的配置
+				var objtip=o.obj.prev('.Validform_checktip');
+				cssctl(objtip,o.type);
+				objtip.text(msg);
+			}else{//验证成功后提示的配置
+				var objtip= $('.alarm');
+				cssctl(objtip,o.type);
+				objtip.removeClass('dn').text(msg);
+			}
+		}
+});
+/*添加商品规格*/
+$form.on('click','.add-pro',function(){
+	var dom = $('#profileTpl').html();
+	$('.profile').append(dom);
+});
+/*删除商品规格*/
+$form.on('click','.del-pro',function(){
+	$(this).closest('li').remove();
+});
+/*删除上传图片*/
+$form.on('click','.del-pic',function(){
+	$(this).closest('span').remove();
+	var $pics = $('#uploadPic').find('span');
+	var str = '';
+	$pics.each(function(){
+		str += $(this).data('url')+',';	//重新拼接图片地址串儿
+	});
+	str = str.replace(/,$/gi,'');//	去除最后一个逗号
+	$('.pics').val(str);
+
+	$.ajax({ type: 'DELETE',
+    url: '/upload/delete/'+$(this).data('url'),
+    success : function(data){
+    	if (!data.code) {alert(data.msg);};
+    }
+  });
+});
+
+/*商品类目联动*/
+$form.on('change','.typeIndex',function(){
+		var id = this.value;
+		var $sub = $form.find('.subType');
+		if (!id) {	//防止父级为空
+			$sub.html('<option>请选择</option>');
+			return;
+		};
+		$.get('/goods/category/subCategories/pid/'+id,function(dom){
+			$sub.html(dom);
+			//以下是回显用的
+			var index  = $sub.data('val');
+			index && $sub.val(index);
+			$sub.removeAttr('data-val').removeData('val');
+	});
+});
+
+new MultipleUploader({
+  trigger: '.btn-upload',
+  action: '/upload/pic',
+  name: 'f',
+  accept:'image/\*',
+  change : function(){
+  	var file = this._files[0];
+  	if(!validPic(file)) {return false;}
+   	this.submit();
+  }
+}).success(function(data,$btn) {
+	data = $.parseJSON(data);
+	var src = data.f.path;
+  $btn.siblings('.showPic').attr('src',src);
+  $btn.before('<span data-url="'+src+'"><a href="javascript:;" class="del-pic" data-url="'+data.f.name+'"></a><img src="\\'+src+'"></span>');
+  $('.pics').val(function(){
+  	var old = this.value?this.value+',':'';	//图片地址拼接，做参数
+  	return old + src;
+  });
+});
+</script>
+</script>
+</body>
+</html>

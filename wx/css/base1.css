@@ -1,0 +1,40 @@
+@charset "UTF-8";
+html{font-size:100px;}
+body,ul,form{margin:0;padding:0;}dl,dd,figure,h1,h2,h3,h4,h5,h6,p{margin:0;}
+body{font-family:"Helvetica Neue",Helvetica,STHeiTi,sans-serif;line-height:1.5;font-size:14px;color:#000;background-color:#f8f8f8;-webkit-user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased;-webkit-overflow-scrolling:touch;outline:0}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:400}table{border-collapse:collapse;border-spacing:0}caption,th{text-align:left}fieldset,img{border:0}li{list-style:none}ins{text-decoration:none}del{text-decoration:line-through}input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;outline:0}button{-webkit-appearance:none;border:0;background:0 0}a{-webkit-touch-callout:none;text-decoration:none;}:focus{outline:0;}em,i{font-style:normal}
+a{color:#00a5e0}em{color:#ff8444}::-webkit-input-placeholder{color:#bbb}
+h1{font-size:18px}h2{font-size:17px}h3,h4,.f16{font-size:16px}h5,.f14{font-size:14px;} h6,.f12{font-size:12px}
+.g0{color:#000}.g7{color:#777}.gb{color:#bbb}.wh{color:white}
+.red{color:#ff4222}.tc{text-align:center}
+.arrow{position:absolute;margin:8px 10px;border-color:#000 transparent transparent;border-style:solid dashed;border-width:4px 4px 0;line-height:0;transition:.1s;}
+.nowrap{max-width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.dn{display:none;}.l{float:left;} .r{float:right;}.pn{pointer-events:none;}
+
+nav{position:fixed;width:100%;height:45px;bottom:0;border-top:1px solid #bbb;display: -webkit-box;  background: #FFF;z-index:6;}
+nav>a{width:100%;display:-webkit-box;-webkit-box-flex:1;-webkit-box-pack:center;-webkit-box-align:center;-webkit-box-orient:vertical;color:#000;}
+nav>a:before{display:block;width:17px;height:17px;}
+nav>a:active{background:#E5E5E5;}
+
+.i-share:before,.i-pc:before,.i-phone:before,.i-tap:before,.i-news:before,.i-ok:before,.i-bad:before,.i-box:before,.i-star:before,.i-hat:before,.i-bar:before,.i-dan:before,.i-lite:before,.i-guide:before,.i-right:before,.cked:after{background-image:url(../img/icons.png);background-repeat:no-repeat;-webkit-background-size:cover;content:'';}
+
+.i-pc:before{background-position:0 0}
+.i-phone:before{background-position:0 -32px}
+.i-tap:before{background-position:0 -63px}
+.i-news:before{background-position:0 -54px; }
+.i-ok:before{background-position:0 -215px}
+.i-box:before{background-position:0 -72px}
+.i-bad:before{background-position:0 -250px;}
+.i-share:before{background-position:0 -233px;}
+
+.i-star:before{background-position: 0 -105px;}
+.i-hat:before{background-position: 0 -127px;}
+.i-bar:before{background-position: 0 -148px;}
+.i-dan:before{background-position: 0 -169px;}
+.i-lite:before{background-position: 0 -190px;}
+.i-guide:before{background-position: 0 -211px;}
+
+.loading{height:200px;position:relative;}
+.loading>i{width:24px;height:24px;position:absolute;top:50%;left:50%;margin:-16px;border:2px solid #237FE5;border-radius:24px;
+-webkit-animation: gif 1s infinite linear;clip:rect(0 auto 16px 0);}
+@-webkit-keyframes gif{0% {-webkit-transform:rotate(0deg);}100% {-webkit-transform: rotate(360deg);}}
+/*狗日的QQ浏览器X5内核，伪元素竟然不能执行动画*/

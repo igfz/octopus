@@ -1,0 +1,91 @@
+<% include ../template/header.html %>
+<link rel="stylesheet" href="/css/manager.css">
+</head>
+<body>
+<div id="container">
+	<% include ../template/top.html %>
+	<div class="middle">
+		<div id="sitemap">
+			<div class="l">
+				<a href="/" class="back btn"><i class="icon-angle-left"></i>返回</a><h2 class="f20 ml20 n di">登录</h2>
+			</div>
+		</div>
+	</div>
+	<div id="main">
+		<% include ../template/menu.html %>
+		<div class="main">
+			<ul class="row nav-tabs">
+				<li><a href="/manager/goods" class="tab">商品管理</a></li>
+				<li><span class="tab active">分类管理</span></li>
+				<li class="nav-search"><input type="text" class="nav-search-input" name=""><button type="button" class="btn btn-blue btn-search">搜索</button></li>
+			</ul>
+			<dl class="gm-box">
+				<dt class="gm-box-hd"><a href="javascript:;" class="btn btn-blue btn-add-cate"><i class="icon-plus"></i>增加分类</a></dt>
+				<dd>
+					<table class="gm-box-bd">
+					  <tr>
+					    <th width="33%">分类名称</th>
+					    <th width="33%">数量</th>
+					    <th width="34%">操作</th>
+					  </tr>
+					  <tr>
+					    <td>categrate name</td>
+					    <td>777</td>
+					    <td class="gm-box-bd-ctrl" data-gid="1">
+					    		<a href="javascript:;" class="btn-edit blue mr10"><i class="icon-edit"></i>编辑</a>
+					    		<a href="javascript:;" class="btn-del red"><i class="icon-trash"></i>删除</a>
+					    </td>
+					  </tr>
+					</table>
+				</dd>
+				<dd class="tr hl24 mt20">这里是分页<a href="javascript:;">1</a><a href="javascript:;">2</a><a href="javascript:;">3</a></dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<input type="hidden" id="menuIndex" value="2">
+<% include ../template/script.html %>
+<script>
+var $ctrl = $('.gm-box-bd-ctrl');
+
+$('.btn-search').on('click',function(){
+	var v = $('.nav-search-input').val();
+	alert(v);
+});
+
+var cateDom = '分类名称：<input type="text" class="jd-cate-input" name="">';
+
+$('.btn-add-cate').on('click',function(){
+	jDialog.confirm(cateDom,{
+	    type : 'highlight',
+	    handler : function(button,dialog) {
+	        alert('执行');
+	        dialog.close();
+	    }
+	},{},{title : '新增分类'});
+});
+
+$ctrl.on('click','.btn-edit',function(){
+	var gid = $(this).closest('.gm-box-bd-ctrl').data('gid');
+	jDialog.confirm(cateDom,{
+	    type : 'highlight',
+	    handler : function(button,dialog) {
+	        alert(gid);
+	        dialog.close();
+	    }
+	},{},{title : '编辑分类'});
+})
+.on('click','.btn-del',function(){
+	var gid = $(this).closest('.gm-box-bd-ctrl').data('gid');
+	jDialog.confirm('执行后将无法恢复，您确定要删除吗？',{
+	    type : 'highlight',
+	    handler : function(button,dialog) {
+	        alert(gid);
+	        dialog.close();
+	    }
+	},{},{title : '删除商品确认'});
+});
+</script>
+</script>
+</body>
+</html>

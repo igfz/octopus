@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,user-scalable=no">
+	<title>章鱼微站-活动中心</title>
+	<link rel="shortcut icon" href="favicon.ico">
+	<link href="css/base1.css" rel="stylesheet">
+	<style>
+	article{margin-bottom:60px;font-size:16px;}
+	h1{height:45px;line-height:45px;background:rgba(20,20,20,.9);color:#fff;}
+	.hot-img{width:100%;}
+	.profile{padding-right:5%;margin:15px 0;}
+	.profile .time{padding:8px 15px;margin-left:3%;border-radius:15px;background:#E1E6BB;}
+	.content{padding:0 3%;}
+	.download{display:-webkit-box;margin:20px auto;width:70%;height:40px;line-height: 40px;background:red;color:#fff;-webkit-box-pack:center;border-radius:8px;position: relative;}
+	.download:after{width:8px;height:8px;content:'';display:inline-block;-webkit-transform:rotate(45deg);border-width:2px 2px 0 0;border-color:#fff;border-style:solid;position:absolute;right:20px;top:15px;}
+	h2{color:rgba(0,0,0,.7)}
+	.active{background:#E5E5E5;}
+	</style>
+<body>
+<article>
+  <h1 class="tc">活动中心</h1>
+  <div><img class="hot-img" src=""></div>
+  <h2 class="tc"><b></b></h2>
+  <div class="profile">
+  	<span class="time"></span>
+  </div>
+  <p class="content"></p>
+  <a class="download" href="http://www.8win.com/m/dl.html">进入活动</a>
+</article>
+<nav>
+	<a href="index.html" class="i-news">爆料</a><a href="hot.html" class="i-ok">推荐</a><a href="promotion.html" class="active i-box">活动中心</a>
+</nav>
+<script src="js/zepto.min.js"></script>
+<script>
+(function($) {
+	$ct = $('.content'),jsonStr = SS['promotion'];
+
+	if (jsonStr) {
+		var obj = JSON.parse(jsonStr);
+		setValue(obj);
+		return;
+	}
+
+	var indexParam = JSON.parse(JSON.stringify(ajaxParam));
+	indexParam.busiCode ='550008';
+
+	//初始化ajax
+	!function(){
+		var param = {'transMessage':JSON.stringify(indexParam)};
+		$.ajax({'type':'GET','url':ajaxUrl,dataType:'jsonp',jsonp:'f',
+			'data':param,
+			beforeSend:function(){
+				$ct.html(loadImg);
+			},
+			success:function(json){
+				var obj = json.responseData;
+				setValue(obj);
+				SS['promotion'] = JSON.stringify(obj);; 
+			}
+		});
+	}();
+	
+	function setValue(obj){
+		$('h2').find('b').text(obj.title);
+		$('.hot-img').attr('src',obj.backgroundImage);
+		$('.time').text('活动时间：'+obj.activityTime);
+		$ct.html(obj.rule);
+	}
+
+})(Zepto);
+</script>
+</body>
+</html>

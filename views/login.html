@@ -1,0 +1,73 @@
+<% include template/header.html %>
+<link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+<div id="container">
+	<% include template/top.html %>
+	<div class="middle">
+		<div id="sitemap">
+			<div class="l">
+				<a href="/" class="back btn"><b class="f16">＜</b>返回</a><h2 class="f20 ml20 n di">登录</h2>
+			</div>
+		</div>
+	</div>
+	<div id="main">
+		<form class="login from" method="post" action="/login">
+			<div class="alarm <%= error?'':'dn'%>"><%= error%></div>
+			<table class="grid">
+			  <tr>
+			    <td class="w75">*用户名：</td>
+			    <td><em class="Validform_checktip"></em><input type="text" class="w300" name="username" datatype="s4-18" placeholder="gong 默认"></td>
+			  </tr>
+			  <tr>
+			    <td>*密　码：</td>
+			    <td><em class="Validform_checktip"></em><input type="password" class="w300" name="userpwd" datatype="*4-16"></td>
+			  </tr>
+			  <tr>
+			    <td>*验证码：</td>
+			    <td><em class="Validform_checktip"></em><input type="text" class="w170" name="code" maxlength="4" datatype="n" errormsg="请填写4位验证码"><a href="javascript:;" class="reget"><img src="images/code.jpg" class="code"><i>看不清，换一张</i></a></td>
+			  </tr>
+			  <tr>
+			    <td>&nbsp;</td><td><label class="remember"><img class="checkbox" src="images/dot.gif"><input type="checkbox" class="cb-orig">下次自动登录</label></td>
+			  </tr>
+			  <tr>
+			    <td colspan="2" class="tc"><button type="submit" class="btn btn-big btn-red submit">登　录</button><a href="/register" class="btn btn-big btn-blue dib ml30">立即注册</a></td>
+			  </tr>
+			</table>
+		</form>
+	</div>
+</div>
+<% include template/script.html %>
+<script>
+var $form = $('.from');
+$.Tipmsg.r='';	//验证通过不显示其文字
+$form.Validform({tipSweep:true,
+		tiptype:function(msg,o,cssctl){
+			if(!o.obj.is("form")){
+				var objtip=o.obj.siblings(".Validform_checktip");
+				cssctl(objtip,o.type);
+				objtip.text(msg);
+			}else{
+				var objtip= $('.alarm');
+				cssctl(objtip,o.type);
+				objtip.removeClass('dn').text(msg);
+			}
+		},
+		ajaxPost:true,callback:function(data){
+			if(data.code){
+				$('.alarm').text(data.msg);
+				setTimeout(function(){
+					location.href='/';
+				},1000);
+			}else{
+				$('.alarm').removeClass('dn').text(data.msg);
+			}
+		}
+});
+
+$form.on('click','.reget',function(){
+	jDialog.confirm('重新获取');
+});
+</script>
+</body>
+</html>

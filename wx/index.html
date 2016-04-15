@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html manifest="8win.appcache">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,user-scalable=no">
+	<title>章鱼微站-首页</title>
+	<link rel="shortcut icon" href="favicon.ico">
+	<link href="css/base1.css" rel="stylesheet">
+	<link href="css/index.css" rel="stylesheet">
+<body>
+<header>
+	<section class="slide" id="banner"></section>
+</header>
+<section>
+	<h1>章鱼爆料</h1>
+	<ul class="filter">
+		<li class="btn-date"><h4>日期</h4><div class="filter-info gb datepicker"></div></li>
+		<li class="btn-match"><h4>赛事</h4><div class="filter-info ft-match gb">全部赛事</div></li>
+	</ul>
+	<dl class="feed-wrap"></dl>
+</section>
+<footer>
+	<div class="switch">
+		<a href="//p.8win.com" class="i-pc">电脑版</a><a href="//m.8win.com" class="i-phone">手机版</a><a href="" class="i-tap">触屏版</a>
+	</div>
+	<p>Copyright © 2011-2014 章鱼彩票 All Rights Reserved<br> 电信与信息服务经营许可证150021号 京ICP备14036607号</p>
+</footer>
+<nav>
+	<a href="index.html" class="active i-news">爆料</a><a href="hot.html" class="i-ok">推荐</a><a href="promotion.html" class="i-box">活动中心</a>
+</nav>
+<aside>
+	<dl class="s-match">
+		<dt>
+			<span class="back">取消</span>赛事
+		</dt>
+		<dd class="check-box">
+			<div class="global"><span class="all">全选</span><span class="nor">反选</span></div><div class="team-tag"></div>
+		</dd>
+		<dd class="seacher"><input type="search" class="search pn" placeholder="查询序号或关键词"><span class="btn-search">查询</span></dd>
+		<dd class="result-box">
+			<ul class="match-list"></ul>
+		</dd>
+	</dl>
+</aside>
+<div class="masking"></div>
+<script id="tplBanner" type="text/template">
+<% if (l) { %>
+	<ul>
+	<% for(var i=0;i<l;i++){ var obj =banner[i];%>
+	  <li><a href="<%=obj.url%>"><img src="<%=obj.imageUrl%>"></a></li>
+	<% } %>
+	</ul>
+	<div class="dot">
+	<% for(var i=0;i<l;i++){ %><span></span><% } %>
+	</div>
+<% } %>
+</script>
+<script id="tplDefault" type="text/template">
+	<dt class="hot-img" style="background-image:url(img/banner.png)"></dt>
+	<dd><ul class="feed icons">
+	<% var o = responseData.list, l=o.length;
+		if (l) {
+			for(var i=0;i<l;i++){ var obj =o[i];%>
+			<li><a href="tips.html?id=<%=obj.id%>"><span style="background-image:url(<%=obj.pic1?obj.pic1:'img/default-s.png' %>);"></span>
+				<div class="info tc"><h4><%=obj.titleS%></h4><p><%=obj.auditTime.substr(0,16)%></p>
+				</div>
+				</a>
+			</li>
+			<% }}else{%>
+				<li class="nodata">暂时没有这天的爆料哦...</li>
+			<% } %>
+	</ul></dd>
+</script>
+<script id="tplMain" type="text/template">
+	<% var inf = responseData.eventInfo,week =['','一','二','三','四','五','六','日'];%>
+	<dt class="vs-hd"><img class="i-team" src="<%=inf.hostIcon %>"><span><%=inf.hostName %> <em class="i-vs">VS</em> <%=inf.guestName %></span><img class="i-team" src="<%=inf.guestIcon %>"></dt>
+	<dd class="vs-info tc gb"><p>周<%=week[inf.weekDay] %> <%=inf.num.substr(9) %></p><p><%=inf.closingTime.substr(0,16) %> 截止投注</p></dd>
+	<dd><ul class="feed icons">
+	<% var o = responseData.list, l=o.length;
+		if (l) {
+			for(var i=0;i<l;i++){ var obj =o[i];%>
+			<li><a href="tips.html?id=<%=obj.id%>"><span style="background-image:url(<%=obj.pic1?obj.pic1:'img/default-s.png' %>);"></span>
+				<div class="info tc"><h4><%=obj.titleS%></h4><p><%=obj.auditTime%></p>
+				</div>
+				</a>
+			</li>
+			<% }}else{%>
+				<li class="nodata">暂时没有这场比赛的爆料哦...</li>
+			<% } %>
+	</ul></dd>
+</script>
+<script id="tplMatch" type="text/template">
+	<% for(var i=0;i<msize;i++){ var match = matchs[i],teams = match.teamList;%>
+		<% for(var j=0,l=teams.length;j<l;j++){ var team = teams[j];%>
+			<li class="<%=(team.type==1)?'useful':'' %>" data-name="<%=match.leagueName %>" data-mid="<%=team.num %>" data-id="<%=team.num.substr(9) %>" data-host="<%=team.hostName %>" data-guest="<%=team.guestName %>"><span><%=team.num.substr(9) %></span><em><%=team.hostName %><i class="i-vs">VS</i><%=team.guestName %></em></li>
+	<% }} %>
+</script>
+<script src="js/zepto.min.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

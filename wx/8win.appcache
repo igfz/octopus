@@ -1,0 +1,35 @@
+CACHE MANIFEST
+# 以上折行必需要写
+# VERSION 0.1.1
+
+CACHE:
+# 这部分写需要缓存的资源文件列表
+# 可以是相对路径也可以是绝对路径
+
+index.html
+article.html
+hot.html
+promotion.html
+tips.html
+
+favicon.ico
+css/base1.css
+css/index.css
+css/hot.css
+js/zepto.min.js
+js/index.js
+js/hot.js
+img/banner.png
+img/default-s.png
+img/icons.png
+
+NETWORK:
+# 可选
+# 这一部分是要绕过缓存直接读取的文件
+
+*
+
+FALLBACK:
+# 可选
+# 这部分写当访问缓存失败后，备用访问的资源
+# 每行两个文件，第一个是访问源，第二个是替换文件*.html offline.html
