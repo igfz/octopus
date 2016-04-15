@@ -29,7 +29,6 @@ app.use(cookieParser());
 app.use(session({secret:'nick',resave:true, saveUninitialized:true}));   //session 设置
 
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'wx')));
 app.use('/uploads',express.static(path.join(__dirname, 'uploads')));
 
 

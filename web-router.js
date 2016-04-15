@@ -15,6 +15,8 @@ router.get('/logout',index.logout);
 router.get('/register',filter.session, index.showRegister);
 router.post('/register',index.register);
 
+router.post('/ajaxPost',index.ajaxPost);
+
 router.use(filter.auth);//拦截器，以下页面进入需要登陆
 
 router.get('/manager/add-goods',filter.session, manager.showAddGoods);

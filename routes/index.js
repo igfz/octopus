@@ -39,6 +39,13 @@ var index = {
     }
     res.locals.user = req.session.user = username; //存入session
     res.json({code:1,msg:'注册成功'});
+  },
+  ajaxPost : function(req, res){
+    var bd = req.body;
+    res.set({'Content-Type':'application/json','Access-Control-Allow-Origin':'*',
+              'Access-Control-Allow-Methods':'POST,PUT,DELETE','Access-Control-Allow-Headers':'X-Requested-With,Content-Type'
+             });
+    res.json({'code':1,'msg':'注册成功','req':bd});
   }
 };
 
